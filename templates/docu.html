@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <title>B站纪录片数据分析</title>
+    <!--meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="" />
+    <script>
+      addEventListener("load", function () {
+      	setTimeout(hideURLbar, 0);
+      }, false);
+      
+      function hideURLbar() {
+      	window.scrollTo(0, 1);
+      }
+    </script>
+    <!--//meta tags ends here-->
+    <!--booststrap-->
+    <link href="static/assert/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <!--//booststrap end-->
+    <!-- font-awesome icons -->
+    <link href="static/assert/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" media="all">
+    <!-- //font-awesome icons -->
+    <!--lightbox slider-->
+    <link rel="stylesheet" href="static/assert/css/lightbox.css">
+    <!-- lightbox slider-->
+    <link href="static/assert/css/popup-box.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //pop-ups-->
+    <!--stylesheets-->
+    <link href="static/assert/css/style.css" rel='stylesheet' type='text/css' media="all">
+    <!--//stylesheets-->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  </head>
+  <body>
+    <div class="header-outs" id="header">
+      <div class="header-w3layouts">
+        <div class="container-fluid">
+          <!--//navigation section -->
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <ul class="navbar-nav ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/index">首页 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a href="/docu" class="nav-link scroll">纪录片</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/score" class="nav-link scroll">评分</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/word" class="nav-link scroll">词云</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!--//navigation section -->
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+      <!--banner -->
+      <!-- Slideshow 4 -->
+      <div class="slider">
+        <div class="callbacks_container">
+          <ul class="rslides" id="slider4">
+          </ul>
+        </div>
+        <!-- This is here just to demonstrate the callbacks -->
+        <!-- <ul class="events">
+          <li>Example 4 callback events</li>
+          </ul>-->
+      </div>
+      <div class="clearfix"></div>
+    </div>
+        <!--service-->
+    <!-- //banner -->
+    <!-- About-one -->
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3" id="about">
+    <h3 class="title mb-2">B站纪录片播放量排行</h3>
+      <table class="table table-striped">
+          <tr>
+              <td>名称</td>
+              <td>id</td>
+              <td>集数</td>
+              <td>排名</td>
+              <td>播放量</td>
+              <td>评分</td>
+          </tr>
+          {% for docu in docus %}
+          <tr>
+              <td width = "200">
+                  <a href="{{ docu[7] }}" target="_blank">
+                      <p><font color="black">{{ docu[0] }}</font></p>
+                  </a>
+              </td>
+              <td>{{ docu[1] }}</td>
+              <td>{{ docu[2] }}</td>
+              <td>{{ docu[4] }}</td>
+              <td>{{ docu[5] }}</td>
+              <td>{{ docu[6] }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+    </section>
+    <!--states -->
+
+    <!--//contact -->
+    <!-- footer -->
+    <footer class="py-lg-4 py-md-3 py-sm-3 py-3">
+      <div class="container-fluid py-lg-5 py-md-5 py-sm-4 py-3">
+      </div>
+      <div class="copy-agile-right text-center pt-lg-4 pt-3">
+        <p> 
+          Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+        </p>
+
+      </div>
+    </footer>
+    <!-- //footer -->
+    <!--model-->
+
+    <!--//model-->
+    <!--js working-->
+    <script src='js/jquery-2.2.3.min.js'></script>
+    <!--//js working-->
+    <!--  light box js -->
+    <script src="js/lightbox-plus-jquery.min.js"> </script> 
+    <!-- //light box js-->   
+    <!--responsiveslides banner-->
+    <script src="js/responsiveslides.min.js"></script>
+    <script>
+      // You can also use "$(window).load(function() {"
+      $(function () {
+      	// Slideshow 4
+      	$("#slider4").responsiveSlides({
+      		auto: true,
+      		pager:false,
+      		nav:true ,
+      		speed: 900,
+      		namespace: "callbacks",
+      		before: function () {
+      			$('.events').append("<li>before event fired.</li>");
+      		},
+      		after: function () {
+      			$('.events').append("<li>after event fired.</li>");
+      		}
+      	});
+      
+      });
+    </script>
+    <!--// responsiveslides banner-->		  
+    <!--About OnScroll-Number-Increase-JavaScript -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.countup.js"></script>
+    <script>
+      $('.counter').countUp();
+    </script>
+    <!-- //OnScroll-Number-Increase-JavaScript -->
+    <!--pop-up-box video-->
+    <script src="js/jquery.magnific-popup.js"></script>
+    <script>
+      $(document).ready(function() {
+      $('.popup-with-zoom-anim').magnificPopup({
+      type: 'inline',
+      fixedContentPos: false,
+      fixedBgPos: true,
+      overflowY: 'auto',
+      closeBtnInside: true,
+      preloader: false,
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'my-mfp-zoom-in'
+      });
+      
+      });
+    </script>
+    <!-- //pop-up-box video -->
+
+   <!-- start-smoth-scrolling -->
+      <script src="js/move-top.js"></script>
+      <script src="js/easing.js"></script>
+      <script>
+         jQuery(document).ready(function ($) {
+         	$(".scroll").click(function (event) {
+         		event.preventDefault();
+         		$('html,body').animate({
+         			scrollTop: $(this.hash).offset().top
+         		}, 900);
+         	});
+         });
+      </script>
+      <!-- start-smoth-scrolling -->
+      <!-- here stars scrolling icon -->
+      <script>
+         $(document).ready(function () {
+         
+         	var defaults = {
+         		containerID: 'toTop', // fading element id
+         		containerHoverID: 'toTopHover', // fading element hover id
+         		scrollSpeed: 1100,
+         		easingType: 'linear'
+         	};
+         
+         
+         	$().UItoTop({
+         		easingType: 'easeOutQuart'
+         	});
+         
+         });
+      </script>
+      <!-- //here ends scrolling icon -->
+	    <!-- FlexSlider -->
+    <script src="js/jquery.flexslider.js"></script>
+    <script>
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+
+    </script>
+    <!--//FlexSlider -->
+    <!--bootstrap working-->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- //bootstrap working-->
+  </body>
+</html>
